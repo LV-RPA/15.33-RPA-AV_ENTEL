@@ -1,0 +1,441 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>RPACreacionInc.sikuli</h2> <a href="RPACreacionInc.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+link_rpa = <span class="str">"http://www.anovo.pe/asrentel/RpaCrearIncidente.aspx"</span>
+link_et = <span class="str">"http://www.anovo.pe/asrentel/EntregaTienda.aspx"</span>
+user_asr = <span class="str">"USER_RPA"</span>
+pass_asr = <span class="str">"RPA2019##"</span>
+user_portal = <span class="str">"anv_cquispea"</span>
+pass_portal = <span class="str">"PaSsWk2020"</span>
+user_entel = <span class="str">"EXTCQUISPEA"</span>
+pass_entel = <span class="str">"140120"</span>
+
+<span class="kw">print</span>(<span class="str">"cerrar procesos"</span>)
+<span class="skw">type</span>(<span class="str">"r"</span>,KeyModifier.WIN)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(<span class="str">"cmd"</span>)
+<span class="skw">type</span>(Key.ENTER)
+<span class="skw">sleep</span>(<span class="dig">3</span>)
+paste(<span class="str">r'taskkill /F /IM firefox.exe'</span>)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(Key.ENTER)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+paste(<span class="str">r'taskkill /F /IM iexplore.exe'</span>)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(Key.ENTER)
+<span class="skw">sleep</span>(<span class="dig">3</span>)
+<span class="skw">type</span>(<span class="str">"exit"</span>)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(Key.ENTER)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+
+<span class="kw">print</span>(<span class="str">"abrir firefox"</span>)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(<span class="str">"r"</span>,KeyModifier.WIN)
+<span class="skw">sleep</span>(<span class="dig">3</span>)
+paste(<span class="str">"firefox"</span>)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(Key.ENTER)
+<span class="skw">sleep</span>(<span class="dig">10</span>)
+
+<span class="kw">print</span>(<span class="str">"Ingresar pagina"</span>)
+<span class="skw">wait</span>(<img src="1572464723460.png" />,<span class="dig">120</span>)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">click</span>(Pattern(<img src="1572464723460.png" />).targetOffset(<span class="dig">11</span>,<span class="dig">4</span>),<span class="dig">120</span>)
+<span class="skw">sleep</span>(<span class="dig">3</span>)
+
+<span class="kw">print</span>(<span class="str">"Ingresar asr"</span>)
+<span class="skw">wait</span>(<img src="1568325519771.png" />,<span class="dig">120</span>)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+paste(Pattern(<img src="1568325557140.png" />).targetOffset(<span class="dig">47</span>,-<span class="dig">22</span>),user_asr)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(Key.TAB)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+paste(pass_asr)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(Key.ENTER)
+<span class="skw">sleep</span>(<span class="dig">7</span>)
+<span class="skw">click</span>(Pattern(<img src="1568325668527.png" />).targetOffset(<span class="dig">0</span>,<span class="dig">5</span>))
+<span class="skw">sleep</span>(<span class="dig">15</span>)
+
+<span class="kw">print</span>(<span class="str">"inicio exportar datos"</span>)
+<span class="skw">type</span>(<span class="str">'l'</span>,Key.CTRL)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+paste(link_rpa)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(Key.ENTER)
+<span class="skw">sleep</span>(<span class="dig">5</span>)
+
+<span class="kw">print</span>(<span class="str">"inicio obtener ordenes"</span>)
+<span class="kw">while</span> True:
+    <span class="skw">wait</span>(<img src="1569367084080.png" />,<span class="dig">60</span>)
+    <span class="skw">click</span>(Pattern(<img src="1569367173955.png" />).targetOffset(-<span class="dig">98</span>,<span class="dig">2</span>))
+    <span class="skw">sleep</span>(<span class="dig">5</span>)
+    <span class="kw">if</span> exists(Pattern(<img src="1569368683554.png" />).similar(<span class="dig">0.90</span>),<span class="dig">10</span>):
+        <span class="skw">sleep</span>(<span class="dig">5</span>)
+        <span class="skw">type</span>(<span class="str">"t"</span>, KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">5</span>)
+        <span class="skw">type</span>(<span class="str">"l"</span>, KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        paste(link_et)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">sleep</span>(<span class="dig">7</span>)
+        <span class="skw">type</span>(Key.TAB, KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569336660386-1.png" />).targetOffset(-<span class="dig">38</span>,-<span class="dig">37</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Key.TAB, KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569446320926.png" />).targetOffset(-<span class="dig">139</span>,<span class="dig">17</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Pattern(<img src="1569446392107.png" />).targetOffset(<span class="dig">57</span>,<span class="dig">1</span>),<span class="str">'v'</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569446628469.png" />).targetOffset(<span class="dig">0</span>,<span class="dig">2</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569446661853.png" />).targetOffset(-<span class="dig">45</span>,<span class="dig">1</span>))
+        <span class="skw">sleep</span>(<span class="dig">8</span>)
+
+        <span class="kw">if</span> exists(Pattern(<img src="1569446881469.png" />).targetOffset(<span class="dig">1</span>,<span class="dig">2</span>)):
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">click</span>(Pattern(<img src="1569446881469.png" />).targetOffset(<span class="dig">1</span>,<span class="dig">2</span>))
+            <span class="skw">sleep</span>(<span class="dig">3</span>)
+
+        <span class="kw">elif</span> exists (<img src="1576770529044.png" />):
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">click</span>(<img src="1576770529044.png" />)
+            <span class="skw">sleep</span>(<span class="dig">3</span>)
+
+        <span class="kw">else</span>:
+            <span class="skw">sleep</span>(<span class="dig">3</span>)
+            <span class="skw">type</span>(Key.ENTER)
+            <span class="skw">sleep</span>(<span class="dig">3</span>)
+
+        <span class="skw">type</span>(<span class="str">"w"</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+
+        <span class="kw">print</span>(<span class="str">"abrir iexplorer"</span>)
+        <span class="skw">type</span>(<span class="str">"r"</span>,KeyModifier.WIN)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        paste(<span class="str">"iexplore"</span>)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">sleep</span>(<span class="dig">10</span>)
+        <span class="kw">if</span> exists(<img src="1576879424332.png" />):
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">click</span>(Pattern(<img src="1576879424332.png" />).targetOffset(-<span class="dig">4</span>,-<span class="dig">17</span>))
+            <span class="skw">sleep</span>(<span class="dig">5</span>)
+
+
+        <span class="kw">print</span>(<span class="str">"Ingresar Portal"</span>)
+        <span class="skw">wait</span>(<img src="1568303506821.png" />,<span class="dig">120</span>)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        paste(Pattern(<img src="1568303696409.png" />).targetOffset(<span class="dig">65</span>,-<span class="dig">12</span>), user_portal)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        paste(pass_portal)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">sleep</span>(<span class="dig">10</span>)
+        <span class="kw">if</span> exists (<img src="1568322894042.png" />,<span class="dig">10</span>):
+            <span class="skw">click</span>(Pattern(<img src="1568323065585.png" />).targetOffset(<span class="dig">0</span>,<span class="dig">1</span>))
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">click</span>(Pattern(<img src="1568323106628.png" />).targetOffset(-<span class="dig">56</span>,<span class="dig">2</span>))
+            <span class="skw">sleep</span>(<span class="dig">10</span>)
+
+        <span class="skw">click</span>(Pattern(<img src="1569512860676.png" />).similar(<span class="dig">0.80</span>).targetOffset(<span class="dig">3</span>,<span class="dig">9</span>))
+        <span class="skw">sleep</span>(<span class="dig">10</span>)
+        <span class="skw">click</span>(<img src="1576872194943.png" />)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(<span class="str">'w'</span>,Key.CTRL)
+        <span class="skw">sleep</span>(<span class="dig">10</span>)
+
+        <span class="kw">print</span>(<span class="str">"ingresar al portal"</span>)
+        <span class="skw">type</span>(Key.TAB, KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Key.UP, KeyModifier.WIN)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        paste(Pattern(<img src="1568321503727.png" />).targetOffset(<span class="dig">40</span>,-<span class="dig">11</span>), user_entel)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        paste(pass_entel)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="kw">if</span> exists (<img src="1568324732583.png" />,<span class="dig">120</span>):
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">click</span>(Pattern(<img src="1568324773276.png" />).targetOffset(-<span class="dig">55</span>,<span class="dig">1</span>))
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+
+        <span class="kw">print</span>(<span class="str">"abrir modulo"</span>)
+        <span class="skw">wait</span>(<img src="1568323949843.png" />,<span class="dig">120</span>)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568323985698.png" />).targetOffset(<span class="dig">23</span>,<span class="dig">1</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568324133635.png" />).targetOffset(<span class="dig">68</span>,<span class="dig">2</span>))
+        <span class="skw">sleep</span>(<span class="dig">10</span>)
+
+        <span class="kw">print</span>(<span class="str">"Ingreso de datos"</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569336660386.png" />).targetOffset(-<span class="dig">32</span>,-<span class="dig">11</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">5</span>)
+        <span class="skw">type</span>(Pattern(<img src="1568760487864.png" />).similar(<span class="dig">0.80</span>).targetOffset(-<span class="dig">48</span>,<span class="dig">9</span>),<span class="str">'v'</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">sleep</span>(<span class="dig">15</span>)
+        <span class="kw">if</span> exists(<img src="1568761138131.png" />,<span class="dig">15</span>):
+            <span class="skw">click</span>(Pattern(<img src="1568761138131.png" />).targetOffset(<span class="dig">109</span>,-<span class="dig">1</span>))
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+
+        <span class="kw">print</span>(<span class="str">"ingresar datos contacto"</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568761510523.png" />).targetOffset(<span class="dig">214</span>,<span class="dig">13</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568761607782.png" />).targetOffset(-<span class="dig">56</span>,-<span class="dig">3</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="kw">if</span> exists(<img src="1568761138131.png" />,<span class="dig">15</span>):
+            <span class="skw">click</span>(Pattern(<img src="1568761138131.png" />).targetOffset(<span class="dig">109</span>,-<span class="dig">1</span>))
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569336660386.png" />).targetOffset(-<span class="dig">6</span>,<span class="dig">14</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Pattern(<img src="1568764411275.png" />).targetOffset(<span class="dig">102</span>,<span class="dig">2</span>),<span class="str">'v'</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">'v'</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569336660386.png" />).targetOffset(-<span class="dig">4</span>,<span class="dig">41</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Pattern(<img src="1568764563603.png" />).targetOffset(<span class="dig">101</span>,<span class="dig">0</span>),<span class="str">'v'</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569336660386.png" />).targetOffset(-<span class="dig">24</span>,<span class="dig">68</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+
+        <span class="kw">print</span>(<span class="str">"ingresar descripcion"</span>)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568764827739.png" />).targetOffset(<span class="dig">95</span>,-<span class="dig">12</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">'v'</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568821737641-1.png" />).targetOffset(-<span class="dig">1</span>,<span class="dig">28</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.END)
+        <span class="skw">sleep</span>(<span class="dig">5</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568821971430.png" />).targetOffset(<span class="dig">2</span>,<span class="dig">0</span>))
+        <span class="skw">sleep</span>(<span class="dig">15</span>)
+
+        <span class="kw">print</span>(<span class="str">"crear incidente"</span>)
+        <span class="skw">click</span>(Pattern(<img src="1573230252336.png" />).targetOffset(<span class="dig">82</span>,<span class="dig">15</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568823329808-1.png" />).targetOffset(<span class="dig">0</span>,<span class="dig">8</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569014535329-1.png" />).targetOffset(<span class="dig">140</span>,<span class="dig">6</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568823592994-1.png" />).targetOffset(-<span class="dig">58</span>,<span class="dig">26</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(<img src="1569014627556.png" />)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568823890121-1.png" />).targetOffset(-<span class="dig">17</span>,<span class="dig">20</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569020990460.png" />).targetOffset(<span class="dig">104</span>,<span class="dig">7</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568824106526.png" />).targetOffset(-<span class="dig">20</span>,<span class="dig">14</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">sleep</span>(<span class="dig">4</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569021872330.png" />).targetOffset(<span class="dig">90</span>,<span class="dig">7</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568824333339.png" />).targetOffset(-<span class="dig">13</span>,<span class="dig">13</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569021984006.png" />).targetOffset(<span class="dig">80</span>,<span class="dig">2</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568824440751.png" />).targetOffset(-<span class="dig">45</span>,<span class="dig">17</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568825162977.png" />).targetOffset(<span class="dig">0</span>,-<span class="dig">10</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568824514249.png" />).targetOffset(<span class="dig">73</span>,<span class="dig">8</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568825470455.png" />).targetOffset(-<span class="dig">26</span>,<span class="dig">30</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+
+        <span class="kw">print</span>(<span class="str">"grabar incidente"</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569336660386.png" />).targetOffset(-<span class="dig">31</span>,<span class="dig">14</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Pattern(<img src="1568825633671.png" />).similar(<span class="dig">0.80</span>).targetOffset(<span class="dig">165</span>,<span class="dig">12</span>),<span class="str">'v'</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569336660386.png" />).targetOffset(-<span class="dig">33</span>,<span class="dig">41</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Pattern(<img src="1568825719627.png" />).targetOffset(<span class="dig">162</span>,-<span class="dig">10</span>),<span class="str">'v'</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="kw">print</span>(<span class="str">"grabar"</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569533949500.png" />).targetOffset(-<span class="dig">64</span>,<span class="dig">64</span>))
+        <span class="skw">sleep</span>(<span class="dig">15</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569538020102.png" />).targetOffset(-<span class="dig">1</span>,<span class="dig">0</span>))
+        <span class="skw">sleep</span>(<span class="dig">5</span>)
+        <span class="skw">click</span>(Pattern(<img src="1569336660386.png" />).targetOffset(-<span class="dig">32</span>,-<span class="dig">11</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Pattern(<img src="1569539538068.png" />).targetOffset(<span class="dig">78</span>,<span class="dig">13</span>),<span class="str">'v'</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Key.TAB)
+        <span class="skw">sleep</span>(<span class="dig">30</span>)
+        <span class="kw">if</span> exists(<img src="1570750600130.png" />,<span class="dig">10</span>):
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">click</span>(<img src="1570750600130.png" />)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">click</span>(Pattern(<img src="1570750692717.png" />).targetOffset(-<span class="dig">1</span>,-<span class="dig">3</span>))
+        <span class="kw">else</span>:
+            <span class="skw">type</span>(Key.TAB,KEY_ALT)
+            <span class="skw">sleep</span>(<span class="dig">5</span>)
+            <span class="skw">click</span>(Pattern(<img src="1569336660386.png" />).targetOffset(-<span class="dig">21</span>,<span class="dig">67</span>))
+            <span class="skw">sleep</span>(<span class="dig">3</span>)
+            <span class="skw">type</span>(Key.TAB,KEY_ALT)
+            <span class="skw">sleep</span>(<span class="dig">3</span>)
+            <span class="skw">type</span>(Pattern(<img src="1569541011218.png" />).targetOffset(<span class="dig">73</span>,<span class="dig">2</span>),<span class="str">'v'</span>,KEY_CTRL)
+            <span class="skw">sleep</span>(<span class="dig">3</span>)
+            <span class="skw">click</span>(Pattern(<img src="1569538559738.png" />).targetOffset(-<span class="dig">26</span>,-<span class="dig">2</span>))
+            <span class="skw">sleep</span>(<span class="dig">5</span>)
+            <span class="skw">click</span>(Pattern(<img src="1569538559738.png" />).targetOffset(<span class="dig">34</span>,-<span class="dig">2</span>))
+            <span class="skw">sleep</span>(<span class="dig">5</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568825760289.png" />).targetOffset(<span class="dig">3</span>,<span class="dig">1</span>))
+        <span class="skw">sleep</span>(<span class="dig">10</span>)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">sleep</span>(<span class="dig">10</span>)
+
+        <span class="kw">print</span>(<span class="str">"registrar id incidente"</span>)
+        <span class="skw">doubleClick</span>(Pattern(<img src="1568826020877.png" />).targetOffset(-<span class="dig">10</span>,<span class="dig">26</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">'c'</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Pattern(<img src="1569336837588.png" />).targetOffset(<span class="dig">81</span>,-<span class="dig">1</span>),<span class="str">'v'</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568827013982.png" />).targetOffset(<span class="dig">71</span>,<span class="dig">3</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(Pattern(<img src="1568827071526.png" />).targetOffset(<span class="dig">27</span>,<span class="dig">33</span>))
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(<span class="str">'l'</span>,Key.CTRL)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        paste(link_rpa)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">sleep</span>(<span class="dig">5</span>)
+        <span class="skw">type</span>(Key.TAB,KEY_ALT)
+        <span class="skw">sleep</span>(<span class="dig">5</span>)
+        <span class="skw">type</span>(<span class="str">"w"</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">5</span>)
+
+    <span class="kw">else</span>:
+        <span class="kw">print</span>(<span class="str">"no existen pendientes"</span>)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"w"</span>,KEY_CTRL)
+        <span class="kw">break</span>
+
+<span class="kw">print</span>(<span class="str">"FIN RPA"</span>)
+</pre>
+</body>
+</html>
