@@ -1,0 +1,286 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>RPAAforoEntel.sikuli</h2> <a href="RPAAforoEntel.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+load(<span class="str">"mssql-jdbc-7.0.0.jre8.jar"</span>)
+<span class="kw">from</span> com.ziclix.python.sql <span class="kw">import</span> zxJDBC
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime
+<span class="kw">import</span> sys
+reload(sys)
+sys.setdefaultencoding( <span class="str">"latin-1"</span> )
+
+user_portal = <span class="str">"externo.mesanchezm"</span>
+pass_portal = <span class="str">"Entel2025"</span>
+user_entel = <span class="str">"989868374"</span>
+pass_entel = <span class="str">"102030"</span>
+
+conn = None
+d, u, p, v = <span class="str">"jdbc:sqlserver://10.120.25.80"</span>, <span class="str">"ENVIRONMENT_PRD"</span>, <span class="str">"@env-PRD-2015$#"</span>, <span class="str">"com.microsoft.sqlserver.jdbc.SQLServerDriver"</span>
+
+<span class="kw">print</span>(<span class="str">"abrir iexplorer"</span>)
+<span class="skw">type</span>(<span class="str">"r"</span>,KeyModifier.WIN)
+<span class="skw">sleep</span>(<span class="dig">3</span>)
+paste(<span class="str">"iexplore"</span>)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(Key.ENTER)
+<span class="skw">sleep</span>(<span class="dig">10</span>)
+<span class="kw">if</span> exists(<img src="1576879424332.png" />):
+    <span class="skw">sleep</span>(<span class="dig">2</span>)
+    <span class="skw">click</span>(Pattern(<img src="1576879424332.png" />).targetOffset(-<span class="dig">4</span>,-<span class="dig">17</span>))
+    <span class="skw">sleep</span>(<span class="dig">5</span>)
+
+<span class="kw">print</span>(<span class="str">"Ingresar Portal"</span>)
+<span class="skw">wait</span>(<img src="1568303506821.png" />,<span class="dig">120</span>)
+<span class="skw">sleep</span>(<span class="dig">3</span>)
+paste(Pattern(<img src="1568303696409.png" />).targetOffset(<span class="dig">65</span>,-<span class="dig">12</span>), user_portal)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(Key.TAB)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+paste(pass_portal)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(Key.ENTER)
+<span class="skw">sleep</span>(<span class="dig">10</span>)
+<span class="kw">if</span> exists (<img src="1568322894042.png" />,<span class="dig">10</span>):
+    <span class="skw">click</span>(Pattern(<img src="1568323065585.png" />).targetOffset(<span class="dig">0</span>,<span class="dig">1</span>))
+    <span class="skw">sleep</span>(<span class="dig">2</span>)
+    <span class="skw">click</span>(Pattern(<img src="1568323106628.png" />).targetOffset(-<span class="dig">56</span>,<span class="dig">2</span>))
+    <span class="skw">sleep</span>(<span class="dig">10</span>)
+
+<span class="skw">click</span>(Pattern(<img src="1576283268126.png" />).targetOffset(-<span class="dig">14</span>,<span class="dig">12</span>))
+<span class="skw">sleep</span>(<span class="dig">10</span>)
+<span class="skw">click</span>(<img src="1576872194943.png" />)
+<span class="skw">sleep</span>(<span class="dig">3</span>)
+<span class="skw">type</span>(<span class="str">'w'</span>,Key.CTRL)
+<span class="skw">sleep</span>(<span class="dig">10</span>)
+
+<span class="kw">print</span>(<span class="str">"ingresar al portal"</span>)
+<span class="skw">type</span>(Key.TAB, KEY_CTRL)
+<span class="skw">sleep</span>(<span class="dig">3</span>)
+<span class="skw">type</span>(Key.UP, KeyModifier.WIN)
+<span class="skw">sleep</span>(<span class="dig">5</span>)
+paste(Pattern(<img src="1568321503727.png" />).targetOffset(<span class="dig">40</span>,-<span class="dig">11</span>), user_entel)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(Key.TAB)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+paste(pass_entel)
+<span class="skw">sleep</span>(<span class="dig">2</span>)
+<span class="skw">type</span>(Key.ENTER)
+<span class="skw">sleep</span>(<span class="dig">5</span>)
+<span class="kw">if</span> exists (<img src="1568324732583.png" />,<span class="dig">120</span>):
+    <span class="skw">sleep</span>(<span class="dig">2</span>)
+    <span class="skw">click</span>(Pattern(<img src="1568324773276.png" />).targetOffset(-<span class="dig">55</span>,<span class="dig">1</span>))
+    <span class="skw">sleep</span>(<span class="dig">2</span>)
+
+<span class="kw">try</span>:
+    conn = zxJDBC.connect(d, u, p, v)
+    cursor = conn.cursor()
+    cursor.execute(<span class="str">"use AnovoASR exec usp_ObtenerOrdenesAforoEntel"</span>)
+
+    <span class="kw">for</span> incidente,telefono,razon,entel <span class="kw">in</span> cursor.fetchall():
+        <span class="kw">print</span>(<span class="str">"abrir modulo"</span>)
+        <span class="skw">sleep</span>(<span class="dig">5</span>)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">sleep</span>(<span class="dig">5</span>)
+        <span class="skw">wait</span>(<img src="1568323949843.png" />,<span class="dig">120</span>)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(Pattern(<img src="1577473957575.png" />).targetOffset(<span class="dig">44</span>,<span class="dig">1</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(Pattern(<img src="1577473986005.png" />).targetOffset(<span class="dig">88</span>,<span class="dig">1</span>))
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">click</span>(Pattern(<img src="1577474019427.png" />).targetOffset(<span class="dig">11</span>,-<span class="dig">1</span>))
+        <span class="skw">sleep</span>(<span class="dig">10</span>)
+        <span class="skw">wait</span>(<img src="1577474070634.png" />,<span class="dig">120</span>)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+
+        <span class="kw">print</span>(<span class="str">"buscar incidente"</span>)
+        paste(Pattern(<img src="1577474091534.png" />).targetOffset(-<span class="dig">37</span>,<span class="dig">9</span>), telefono)
+        <span class="skw">sleep</span>(<span class="dig">3</span>)
+        <span class="skw">type</span>(Key.ENTER)
+        <span class="skw">sleep</span>(<span class="dig">10</span>)
+        <span class="kw">if</span> exists(<img src="1577474389606.png" />):
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="kw">print</span>(<span class="str">"no se encontro datos"</span>)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+
+            sql = <span class="str">"update AnovoASR.dbo.INCIDENCIA2 set CreadoEntel =? where incidencia =? and telefono=?"</span>
+            val = (<span class="str">"0"</span>,incidente,telefono)
+
+            cursor.execute(sql,val)
+            conn.commit()
+            <span class="kw">print</span>(cursor.rowcount, <span class="str">"record(s) affected"</span>)
+
+            sql = <span class="str">"update AnovoASR.dbo.INCIDENCIA2 set CrearManual =? where incidencia =? and telefono=?"</span>
+            val = (<span class="str">"1"</span>,incidente,telefono)
+
+            cursor.execute(sql,val)
+            conn.commit()
+            <span class="kw">print</span>(cursor.rowcount, <span class="str">"record(s) affected"</span>)
+
+        <span class="kw">elif</span> exists(<img src="1577474672297.png" />):
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="kw">print</span>(<span class="str">"IMEI robado"</span>)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+
+            sql = <span class="str">"update AnovoASR.dbo.INCIDENCIA2 set CreadoEntel =? where incidencia =? and telefono=?"</span>
+            val = (<span class="str">"0"</span>,incidente,telefono)
+
+            cursor.execute(sql,val)
+            conn.commit()
+            <span class="kw">print</span>(cursor.rowcount, <span class="str">"record(s) affected"</span>)
+
+            sql = <span class="str">"update AnovoASR.dbo.INCIDENCIA2 set CrearManual =? where incidencia =? and telefono=?"</span>
+            val = (<span class="str">"1"</span>,incidente,telefono)
+
+            cursor.execute(sql,val)
+            conn.commit()
+            <span class="kw">print</span>(cursor.rowcount, <span class="str">"record(s) affected"</span>)
+
+        <span class="kw">else</span>:
+            <span class="kw">print</span>(<span class="str">"proceder"</span>)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            paste(Pattern(<img src="1577475115442.png" />).targetOffset(<span class="dig">21</span>,<span class="dig">2</span>), razon)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            paste(Pattern(<img src="1577475183825.png" />).targetOffset(-<span class="dig">10</span>,<span class="dig">2</span>),incidente)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            paste(<span class="str">"//"</span>)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">doubleClick</span>(Pattern(<img src="1577475392848.png" />).targetOffset(-<span class="dig">3</span>,<span class="dig">18</span>))
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">type</span>(<span class="str">"c"</span>, KEY_CTRL)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">click</span>(Pattern(<img src="1577475530226.png" />).targetOffset(-<span class="dig">75</span>,-<span class="dig">74</span>))
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">type</span>(<span class="str">"v"</span>, KEY_CTRL)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+
+            <span class="kw">print</span>(<span class="str">"ingresar falla"</span>)
+            paste(Pattern(<img src="1577475628546.png" />).targetOffset(<span class="dig">52</span>,<span class="dig">1</span>), telefono)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            paste(Pattern(<img src="1577475685593.png" />).targetOffset(<span class="dig">104</span>,-<span class="dig">15</span>), entel)
+            <span class="skw">sleep</span>(<span class="dig">3</span>)
+
+            <span class="kw">print</span>(<span class="str">"lapicito"</span>)
+            <span class="skw">click</span>(Pattern(<img src="1577475868858.png" />).targetOffset(<span class="dig">1</span>,-<span class="dig">1</span>))
+            <span class="skw">sleep</span>(<span class="dig">10</span>)
+            <span class="skw">click</span>(<img src="1577476533477.png" />)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">click</span>(Pattern(<img src="1577476565926.png" />).targetOffset(<span class="dig">82</span>,-<span class="dig">1</span>))
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">click</span>(Pattern(<img src="1577476619063.png" />).targetOffset(-<span class="dig">11</span>,<span class="dig">6</span>))
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            paste(Pattern(<img src="1577476680982.png" />).targetOffset(<span class="dig">53</span>,-<span class="dig">16</span>), entel)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">click</span>(Pattern(<img src="1577476811359.png" />).targetOffset(<span class="dig">45</span>,<span class="dig">0</span>))
+            <span class="skw">sleep</span>(<span class="dig">10</span>)
+            <span class="cmt">#click(Pattern("1577476762593.png").targetOffset(-75,-1))</span>
+            <span class="cmt">#sleep(5)</span>
+            <span class="cmt">#type(Key.ENTER)</span>
+            <span class="skw">sleep</span>(<span class="dig">5</span>)
+            <span class="kw">print</span>(<span class="str">"fin del proceso"</span>)
+            <span class="skw">click</span>(Pattern(<img src="1576192682939.png" />).targetOffset(-<span class="dig">17</span>,-<span class="dig">10</span>))
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+
+            sql = <span class="str">"update AnovoASR.dbo.INCIDENCIA2 set CrearManual =? where incidencia =? and telefono=?"</span>
+            val = (<span class="str">"1"</span>,incidente,telefono)
+
+            cursor.execute(sql,val)
+            conn.commit()
+            <span class="kw">print</span>(cursor.rowcount, <span class="str">"record(s) affected"</span>)
+
+            sql = <span class="str">"update AnovoASR.dbo.INCIDENCIA2 set CrearManual =? where incidencia =? and telefono=?"</span>
+            val = (<span class="str">"0"</span>,incidente,telefono)
+
+            cursor.execute(sql,val)
+            conn.commit()
+            <span class="kw">print</span>(cursor.rowcount, <span class="str">"record(s) affected"</span>)
+
+
+    <span class="kw">else</span>:
+        <span class="kw">print</span>(<span class="str">"No hay pendientes"</span>)
+        conn.close()
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="skw">type</span>(<span class="str">"w"</span>,KEY_CTRL)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        <span class="kw">print</span>(<span class="str">"FIN RPA"</span>)
+
+<span class="kw">except</span>:
+    exc_type, exc_val, exc_tb = sys.exc_info()
+
+    ErrorText = <span class="str">"***** ERROR IN SCRIPTNAME = "</span> + sys.argv[<span class="dig">0</span>] + <span class="str">" *****\n"</span>
+    ErrorText += <span class="str">"Date/Time : "</span> + str(datetime.now()) + <span class="str">"\n"</span>
+    ErrorText += <span class="str">"Line Number: "</span> + str(exc_tb.tb_lineno) + <span class="str">"\n"</span>
+    ErrorText += <span class="str">"Error Type : "</span> + exc_type.__name__ + <span class="str">"\n"</span>
+    ErrorText += <span class="str">"Error Value: "</span> + exc_val.message + <span class="str">"\n"</span>
+    ErrorText += <span class="str">"***************************************************************\n\r"</span>
+    <span class="kw">print</span> ErrorText
+</pre>
+</body>
+</html>
