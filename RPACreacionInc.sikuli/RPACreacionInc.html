@@ -70,14 +70,18 @@
 <h2>RPACreacionInc.sikuli</h2> <a href="RPACreacionInc.zip">(Download this script)</a>
 </div>
 <pre class="sikuli-code">
-link_rpa = <span class="str">"http://www.anovo.pe/asrentel/RpaCrearIncidente.aspx"</span>
-link_et = <span class="str">"http://www.anovo.pe/asrentel/EntregaTienda.aspx"</span>
-user_asr = <span class="str">"USER_RPA"</span>
-pass_asr = <span class="str">"RPA2019##"</span>
+load(<span class="str">"mssql-jdbc-7.0.0.jre8.jar"</span>)
+<span class="kw">from</span> com.ziclix.python.sql <span class="kw">import</span> zxJDBC
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime
+<span class="kw">import</span> sys
+
 user_portal = <span class="str">"anv_cquispea"</span>
 pass_portal = <span class="str">"PaSsWk2020"</span>
 user_entel = <span class="str">"EXTCQUISPEA"</span>
 pass_entel = <span class="str">"140120"</span>
+
+conn = None
+d, u, p, v = <span class="str">"jdbc:sqlserver://10.120.25.80"</span>, <span class="str">"ENVIRONMENT_PRD"</span>, <span class="str">"@env-PRD-2015$#"</span>, <span class="str">"com.microsoft.sqlserver.jdbc.SQLServerDriver"</span>
 
 <span class="kw">print</span>(<span class="str">"cerrar procesos"</span>)
 <span class="skw">type</span>(<span class="str">"r"</span>,KeyModifier.WIN)

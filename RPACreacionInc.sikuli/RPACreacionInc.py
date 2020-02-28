@@ -1,11 +1,15 @@
-link_rpa = "http://www.anovo.pe/asrentel/RpaCrearIncidente.aspx"
-link_et = "http://www.anovo.pe/asrentel/EntregaTienda.aspx"
-user_asr = "USER_RPA"
-pass_asr = "RPA2019##"
+load("mssql-jdbc-7.0.0.jre8.jar")
+from com.ziclix.python.sql import zxJDBC
+from datetime import datetime
+import sys
+
 user_portal = "anv_cquispea"
 pass_portal = "PaSsWk2020"
 user_entel = "EXTCQUISPEA"
 pass_entel = "140120"
+
+conn = None
+d, u, p, v = "jdbc:sqlserver://10.120.25.80", "ENVIRONMENT_PRD", "@env-PRD-2015$#", "com.microsoft.sqlserver.jdbc.SQLServerDriver"
 
 print("cerrar procesos")
 type("r",KeyModifier.WIN)
