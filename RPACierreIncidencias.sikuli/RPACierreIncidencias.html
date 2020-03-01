@@ -73,6 +73,8 @@
 load(<span class="str">"mssql-jdbc-7.0.0.jre8.jar"</span>)
 <span class="kw">from</span> com.ziclix.python.sql <span class="kw">import</span> zxJDBC
 <span class="kw">from</span> datetime <span class="kw">import</span> datetime
+<span class="kw">import</span> os
+<span class="kw">import</span> glob
 <span class="kw">import</span> sys
 
 user_portal = <span class="str">"anv_cquispea"</span>
@@ -83,14 +85,14 @@ pass_entel = <span class="str">"140120"</span>
 conn = None
 d, u, p, v = <span class="str">"jdbc:sqlserver://10.120.25.80"</span>, <span class="str">"ENVIRONMENT_PRD"</span>, <span class="str">"@env-PRD-2015$#"</span>, <span class="str">"com.microsoft.sqlserver.jdbc.SQLServerDriver"</span>
 
+<span class="kw">print</span>(<span class="str">"cerrar procesos"</span>)
+os.system(<span class="str">'taskkill /f /im firefox.exe'</span>)
+os.system(<span class="str">'taskkill /f /im iexplore.exe'</span>)
+
 <span class="kw">print</span>(<span class="str">"abrir iexplorer"</span>)
-<span class="skw">type</span>(<span class="str">"r"</span>,KeyModifier.WIN)
-<span class="skw">sleep</span>(<span class="dig">3</span>)
-paste(<span class="str">"iexplore"</span>)
-<span class="skw">sleep</span>(<span class="dig">2</span>)
-<span class="skw">type</span>(Key.ENTER)
+App.open(<span class="str">"C:\\Program Files\\internet explorer\\iexplore.exe"</span>)
 <span class="skw">sleep</span>(<span class="dig">10</span>)
-<span class="kw">if</span> exists(<img src="1576879424332.png" />):
+<span class="kw">if</span> exists(<img src="1576879424332.png" />,<span class="dig">5</span>):
     <span class="skw">sleep</span>(<span class="dig">2</span>)
     <span class="skw">click</span>(Pattern(<img src="1576879424332.png" />).targetOffset(-<span class="dig">4</span>,-<span class="dig">17</span>))
     <span class="skw">sleep</span>(<span class="dig">5</span>)
@@ -290,7 +292,6 @@ paste(pass_entel)
 
     <span class="kw">else</span>:
         <span class="kw">print</span>(<span class="str">"No hay pendientes"</span>)
-        conn.close()
         <span class="skw">sleep</span>(<span class="dig">2</span>)
         <span class="skw">type</span>(<span class="str">"w"</span>,KEY_CTRL)
         <span class="skw">sleep</span>(<span class="dig">2</span>)
@@ -305,9 +306,7 @@ paste(pass_entel)
     ErrorText += <span class="str">"Error Type : "</span> + exc_type.__name__ + <span class="str">"\n"</span>
     ErrorText += <span class="str">"Error Value: "</span> + exc_val.message + <span class="str">"\n"</span>
     ErrorText += <span class="str">"***************************************************************\n\r"</span>
-    conn.close()
     <span class="kw">print</span> ErrorText
-    <span class="kw">print</span>(<span class="str">"ERROR, conexion cerrada"</span>)
 
 <span class="kw">finally</span>:
     conn.close()

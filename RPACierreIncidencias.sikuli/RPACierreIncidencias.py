@@ -1,6 +1,8 @@
 load("mssql-jdbc-7.0.0.jre8.jar")
 from com.ziclix.python.sql import zxJDBC
 from datetime import datetime
+import os 
+import glob
 import sys
 
 user_portal = "anv_cquispea"
@@ -11,14 +13,14 @@ pass_entel = "140120"
 conn = None
 d, u, p, v = "jdbc:sqlserver://10.120.25.80", "ENVIRONMENT_PRD", "@env-PRD-2015$#", "com.microsoft.sqlserver.jdbc.SQLServerDriver"
 
+print("cerrar procesos")
+os.system('taskkill /f /im firefox.exe')
+os.system('taskkill /f /im iexplore.exe')
+
 print("abrir iexplorer")
-type("r",KeyModifier.WIN)
-sleep(3)
-paste("iexplore")
-sleep(2)
-type(Key.ENTER)
+App.open("C:\\Program Files\\internet explorer\\iexplore.exe")
 sleep(10)
-if exists("1576879424332.png"):
+if exists("1576879424332.png",5):
     sleep(2)
     click(Pattern("1576879424332.png").targetOffset(-4,-17))
     sleep(5) 
@@ -218,7 +220,6 @@ try:
 
     else:
         print("No hay pendientes")
-        conn.close()
         sleep(2)
         type("w",KEY_CTRL)
         sleep(2)
@@ -233,9 +234,7 @@ except:
     ErrorText += "Error Type : " + exc_type.__name__ + "\n"
     ErrorText += "Error Value: " + exc_val.message + "\n"
     ErrorText += "***************************************************************\n\r"
-    conn.close()
     print ErrorText
-    print("ERROR, conexion cerrada")
 
 finally:
     conn.close()
