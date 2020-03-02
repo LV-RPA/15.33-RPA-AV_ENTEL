@@ -322,6 +322,12 @@ paste(pass_entel)
     ErrorText += <span class="str">"Error Value: "</span> + exc_val.message + <span class="str">"\n"</span>
     ErrorText += <span class="str">"***************************************************************\n\r"</span>
     <span class="kw">print</span> ErrorText
+    App.open(<span class="str">"C:\\WINDOWS\\system32\\notepad.exe"</span>)
+    <span class="skw">sleep</span>(<span class="dig">5</span>)
+    paste(ErrorText)
+    <span class="skw">sleep</span>(<span class="dig">5</span>)
+    App.open(<span class="str">"C:\\Users\\Administrador\\Documents\\App\\SSmail\\SSmail.exe"</span>)
+    <span class="skw">sleep</span>(<span class="dig">5</span>)
 
 <span class="kw">finally</span>:
     conn.close()

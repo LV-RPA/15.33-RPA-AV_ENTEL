@@ -235,7 +235,13 @@ except:
     ErrorText += "Error Value: " + exc_val.message + "\n"
     ErrorText += "***************************************************************\n\r"
     print ErrorText
-
+    App.open("C:\\WINDOWS\\system32\\notepad.exe")
+    sleep(5)
+    paste(ErrorText)
+    sleep(5)
+    App.open("C:\\Users\\Administrador\\Documents\\App\\SSmail\\SSmail.exe")
+    sleep(5)
+    
 finally:
     conn.close()
     print("conexion cerrada")
