@@ -12,62 +12,62 @@ pass_entel = "140120"
 
 conn = None
 d, u, p, v = "jdbc:sqlserver://10.120.25.80", "ENVIRONMENT_PRD", "@env-PRD-2015$#", "com.microsoft.sqlserver.jdbc.SQLServerDriver"
-
-print("cerrar procesos")
-os.system('taskkill /f /im firefox.exe')
-os.system('taskkill /f /im iexplore.exe')
-
-print("abrir iexplorer")
-App.open("C:\\Program Files\\internet explorer\\iexplore.exe")
-sleep(10)
-if exists("1576879424332-1.png",5):
-    sleep(2)
-    click(Pattern("1576879424332-1.png").targetOffset(-4,-17))
-    sleep(5) 
+try:
+    print("cerrar procesos")
+    os.system('taskkill /f /im firefox.exe')
+    os.system('taskkill /f /im iexplore.exe')
     
-print("Ingresar Portal")
-wait("1568303506821-1.png",120)
-sleep(3)
-paste(Pattern("1568303696409-1.png").targetOffset(65,-12), user_portal)
-sleep(2)
-type(Key.TAB)
-sleep(2)
-paste(pass_portal)
-sleep(2)
-type(Key.ENTER)
-sleep(10)
-if exists ("1568322894042-1.png",10):
-    click(Pattern("1568323065585-1.png").targetOffset(0,1))
-    sleep(2)
-    click(Pattern("1568323106628-1.png").targetOffset(-56,2))
+    print("abrir iexplorer")
+    App.open("C:\\Program Files\\internet explorer\\iexplore.exe")
+    sleep(15)
+    if exists("1576879424332-1.png",10):
+        sleep(2)
+        click(Pattern("1576879424332-1.png").targetOffset(-4,-17))
+        sleep(5) 
+    
+    sleep(3)
+    print("Ingresar Portal")
+    wait("1568303506821-1.png",120)
+    sleep(3)
+    paste(Pattern("1568303696409-1.png").targetOffset(65,-12),user_portal)
+    sleep(5)
+    type(Key.TAB)
+    sleep(5)
+    paste(pass_portal)
+    sleep(5)
+    type(Key.ENTER)
+    sleep(15)
+    if exists ("1568322894042-1.png",10):
+        click(Pattern("1568323065585-1.png").targetOffset(0,1))
+        sleep(2)
+        click(Pattern("1568323106628-1.png").targetOffset(-56,2))
+        sleep(10)
+        
+    click(Pattern("1576283268126.png").targetOffset(-14,12))
+    sleep(10)
+    click("1576872194943-1.png")
+    sleep(3)
+    type('w',Key.CTRL)
     sleep(10)
     
-click(Pattern("1576283268126.png").targetOffset(-14,12))
-sleep(10)
-click("1576872194943-1.png")
-sleep(3)
-type('w',Key.CTRL)
-sleep(10)
-
-print("ingresar al portal")
-type(Key.TAB, KEY_CTRL)
-sleep(3)
-type(Key.UP, KeyModifier.WIN)
-sleep(5)
-paste(Pattern("1568321503727-1.png").targetOffset(40,-11), user_entel)
-sleep(2)
-type(Key.TAB)
-sleep(2)
-paste(pass_entel)
-sleep(2)
-type(Key.ENTER)
-sleep(5)
-if exists ("1568324732583-1.png",120):
-    sleep(2)
-    click(Pattern("1568324773276-1.png").targetOffset(-55,1))
-    sleep(2)
-
-try:
+    print("ingresar al portal")
+    type(Key.TAB, KEY_CTRL)
+    sleep(3)
+    type(Key.UP, KeyModifier.WIN)
+    sleep(8)
+    paste(Pattern("1568321503727-1.png").targetOffset(40,-11), user_entel)
+    sleep(5)
+    type(Key.TAB)
+    sleep(5)
+    paste(pass_entel)
+    sleep(5)
+    type(Key.ENTER)
+    sleep(10)
+    if exists ("1568324732583-1.png",60):
+        sleep(2)
+        click(Pattern("1568324773276-1.png").targetOffset(-55,1))
+        sleep(2)
+    print("iniciar conexion sql, bucle")
     conn = zxJDBC.connect(d, u, p, v)
     cursor = conn.cursor()
     cursor.execute("use AnovoASR exec sp_obtenerpreincidente_nuevo")
@@ -167,9 +167,9 @@ try:
         sleep(3)
     
         print("grabar incidente")
-        paste(Pattern("1568825633671.png").similar(0.80).targetOffset(165,12), ncto)
+        paste(Pattern("1568825633671.png").similar(0.80).targetOffset(167,11), ncto)
         sleep(3)
-        paste(Pattern("1568825719627.png").targetOffset(162,-10), tcto)
+        paste(Pattern("1568825719627.png").targetOffset(167,-9), tcto)
         sleep(3)
         
         print("lapicito")
@@ -184,6 +184,8 @@ try:
             click("1570750600130.png")
             sleep(2)
             click(Pattern("1570750692717.png").targetOffset(-1,-3))
+            sleep(5)
+            
         else:
             paste(Pattern("1569541011218.png").targetOffset(73,2), obs)
             sleep(3)        
@@ -191,19 +193,38 @@ try:
             sleep(5)        
             click(Pattern("1569538559738.png").targetOffset(34,-2))        
             sleep(5)
-            
+
+        type(Key.END)
         print("grabar")
         sleep(3)
-        click(Pattern("1583022321850.png").targetOffset(-36,-9))
+        click(Pattern("1583364868196.png").targetOffset(-7,1))
         sleep(2)
-        type(Key.DOWN)
-        sleep(2)
-        click(Pattern("1568825760289.png").targetOffset(3,1))
+        type(Key.END)
+        sleep(5)
+        
+        if not exists (Pattern("1583341873137.png").targetOffset(0,2)):
+            print("no existe")
+            sleep(2)
+            click(Pattern("1583348722097.png").targetOffset(15,-14))
+            sleep(2)
+            click(Pattern("1583348722097.png").targetOffset(15,-14))
+            sleep(2)
+            click("1583342890237.png")
+            sleep(2)
+            type(Key.END)
+            sleep(5)
+            
+        print("boton grabar")
+        sleep(5)
+        type(Key.END)
+        click(Pattern("1583341873137.png").targetOffset(0,2))
         sleep(10)
         type(Key.ENTER)
         sleep(10)
     
         print("registrar id incidente")
+        wait(Pattern("1568826020877.png").targetOffset(-10,26),240)
+        sleep(2)
         doubleClick(Pattern("1568826020877.png").targetOffset(-10,26))
         sleep(2)
         type("c", KEY_CTRL)
@@ -250,6 +271,7 @@ except:
     ErrorText += "Error Value: " + exc_val.message + "\n"
     ErrorText += "***************************************************************\n\r"
     print ErrorText
+    print("Error")
     App.open("C:\\WINDOWS\\system32\\notepad.exe")
     sleep(5)
     paste(ErrorText)
